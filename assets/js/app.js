@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let studyDiv = document.getElementById("study-div");
   let formDiv = document.getElementById("form-div");
   let form = document.getElementById("form");
+  let cardAppendDiv = document.getElementById("trials-complete");
   let trialResults = [];
   let gun;
   let shotText;
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let highCard;
   let faceCard;
   let cardBack;
+  let cardArr = [];
   let id;
 
   let practiceImages = [
@@ -377,6 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
     form.onsubmit = submit;
     function submit(e) {
       e.preventDefault();
+      cardArr = [];
       let lowCards = document.getElementsByName("lowcardradio");
       let midCards = document.getElementsByName("midcardradio");
       let highCards = document.getElementsByName("highcardradio");
@@ -395,8 +398,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getChecked(cardArray) {
+    
     for (let i = 0; i < cardArray.length; i++) {
       if (cardArray[i].checked) {
+        cardImage = new Image();
+        cardImage.src = cardArray[i].nextElementSibling.firstChild.src
+        cardArr.push(cardImage);
         return cardArray[i].value;
       }
     }
@@ -418,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let database = firebase.database();
 
   function userFirstTimeCallback(exists) {
-    console.log(exists);
+    
     if (exists) {
       form.reset();
       alert(
@@ -443,6 +450,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function writeUserData(userRef) {
     userRef.set(trialResults).then(function () {
       form.classList.add("invisible");
+      for(i = 0; i < cardArr.length; i++){
+        cardAppendDiv.appendChild(cardArr[i]);
+      }
     });
   }
 
@@ -512,7 +522,6 @@ document.addEventListener("DOMContentLoaded", function () {
       thisTrial.totalPoints = total;
       thisTrial.trialNumber = count;
       trialResults.push(thisTrial);
-      console.log(trialResults);
     }
 
     shotTextDiv.textContent = shotText;
@@ -529,7 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showBackground(real) {
-    console.log(real);
+    
     fired = true;
     if (real) {
       arr = trialImages;
@@ -569,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function practiceTrial() {
     key = null;
     scoreDiv.classList.add("invisible");
-    if (count < 5) {
+    if (count < 16) {
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
@@ -585,7 +594,7 @@ document.addEventListener("DOMContentLoaded", function () {
     key = null;
     readyDiv.classList.add("invisible");
     scoreDiv.classList.add("invisible");
-    if (count < 5) {
+    if (count < 100) {
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
