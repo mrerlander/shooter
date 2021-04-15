@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let formDiv = document.getElementById("form-div");
   let form = document.getElementById("form");
   let cardAppendDiv = document.getElementById("trials-complete");
+  let beforeForm = document.getElementById("before-form");
+  let afterForm = document.getElementById("after-form");
+  let surveyURL = "https://csunsbs.qualtrics.com/jfe/form/SV_cSEQTYWt6Ykh5Ii?id="
+  let allDone = false;
   let trialResults = [];
   let gun;
   let shotText;
@@ -450,6 +454,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function writeUserData(userRef) {
     userRef.set(trialResults).then(function () {
       form.classList.add("invisible");
+      beforeForm.classList.add("invisible");
+      afterForm.classList.remove("invisible");
+      allDone = true;
       for(i = 0; i < cardArr.length; i++){
         cardAppendDiv.appendChild(cardArr[i]);
       }
@@ -468,6 +475,9 @@ document.addEventListener("DOMContentLoaded", function () {
       realStartDiv.classList.add("invisible");
       readyDiv.classList.remove("invisible");
       setTimeout(trial, 5000);
+    }
+    if (allDone && e.key == " "){
+      window.location.href = surveyURL + id;
     }
   });
 
