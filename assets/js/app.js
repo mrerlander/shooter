@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let footer = document.getElementById("legend-div");
   let studyDiv = document.getElementById("study-div");
   let formDiv = document.getElementById("form-div");
+  let form = document.getElementById("form");
   let trialResults = [];
   let gun;
   let shotText;
@@ -34,6 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let realTrial = false;
   let practice = true;
   let fired = true;
+  let lowCard;
+  let midCard;
+  let highCard;
+  let faceCard;
+  let cardBack;
+  let id;
+
   let practiceImages = [
     [
       "./assets/images/practice/wu01.jpg",
@@ -365,6 +373,79 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  if (form) {
+    form.onsubmit = submit;
+    function submit(e) {
+      e.preventDefault();
+      let lowCards = document.getElementsByName("lowcardradio");
+      let midCards = document.getElementsByName("midcardradio");
+      let highCards = document.getElementsByName("highcardradio");
+      let faceCards = document.getElementsByName("facecardradio");
+      let cardBacks = document.getElementsByName("cardbackradio");
+      lowCard = getChecked(lowCards);
+      midCard = getChecked(midCards);
+      highCard = getChecked(highCards);
+      faceCard = getChecked(faceCards);
+      cardBack = getChecked(cardBacks);
+
+      id = lowCard + midCard + highCard + faceCard + cardBack;
+
+      checkForFirstTime(id);
+    }
+  }
+
+  function getChecked(cardArray) {
+    for (let i = 0; i < cardArray.length; i++) {
+      if (cardArray[i].checked) {
+        return cardArray[i].value;
+      }
+    }
+  }
+
+  let firebaseConfig = {
+    apiKey: "AIzaSyBoMxRZMTUYZLSJ3sliVZJw8GFxDJ-sINk",
+    authDomain: "shooter-ffae9.firebaseapp.com",
+    databaseURL: "https://shooter-ffae9-default-rtdb.firebaseio.com",
+    projectId: "shooter-ffae9",
+    storageBucket: "shooter-ffae9.appspot.com",
+    messagingSenderId: "976013835210",
+    appId: "1:976013835210:web:45d88db539d0d538996d33",
+    measurementId: "G-DPTCJ9LF0T",
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  let database = firebase.database();
+
+  function userFirstTimeCallback(exists) {
+    console.log(exists);
+    if (exists) {
+      form.reset();
+      alert(
+        "That combination already exists. Please select a different assortment of cards."
+      );
+    } else {
+      let userRef = database.ref(id + "/firstStudy");
+      writeUserData(userRef);
+    }
+  }
+
+  function checkForFirstTime(userId) {
+    let ref = database.ref();
+    let exists;
+    ref.child(userId).once("value", function (snapshot) {
+      exists = snapshot.val() !== null;
+    }).then(function(){
+      userFirstTimeCallback(exists);
+    });
+  }
+
+  function writeUserData(userRef) {
+    userRef.set(trialResults).then(function () {
+      form.classList.add("invisible");
+    });
+  }
+
   document.addEventListener("keydown", function (e) {
     if (!fired) {
       fired = true;
@@ -380,9 +461,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  class Trial {
-
-  }
+  class Trial {}
 
   function showScore(real) {
     fired = true;
@@ -425,15 +504,15 @@ document.addEventListener("DOMContentLoaded", function () {
         break;
     }
 
-    if(real){
-    thisTrial = new Trial();
-    thisTrial.image = shooterBackground.substring(21);
-    thisTrial.shotText = shotText;
-    thisTrial.points = shotPoints;
-    thisTrial.totalPoints = total;
-    thisTrial.trialNumber = count;
-    trialResults.push(thisTrial);
-    console.log(trialResults);
+    if (real) {
+      thisTrial = new Trial();
+      thisTrial.image = shooterBackground.substring(21);
+      thisTrial.shotText = shotText;
+      thisTrial.points = shotPoints;
+      thisTrial.totalPoints = total;
+      thisTrial.trialNumber = count;
+      trialResults.push(thisTrial);
+      console.log(trialResults);
     }
 
     shotTextDiv.textContent = shotText;
@@ -455,7 +534,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (real) {
       arr = trialImages;
       bgArrLoc = Math.floor(Math.random() * arr.length);
-      randomShooterImage = Math.floor(Math.random() * arr[bgArrLoc][1].length)
+      randomShooterImage = Math.floor(Math.random() * arr[bgArrLoc][1].length);
       noShooterBackground = arr[bgArrLoc][0];
       shooterBackground = arr[bgArrLoc][1][randomShooterImage];
       gun = arr[bgArrLoc][2][randomShooterImage];
@@ -468,7 +547,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gun = arr[bgArrLoc][2];
       whichTrial = practiceTrial;
     }
-  
+
     image.src = noShooterBackground;
     image.onload = function () {
       trialDiv.classList.remove("invisible");
@@ -533,12 +612,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 5000);
   }
 
-  function complete(){
+  function complete() {
     footer.classList.add("invisible");
     studyDiv.classList.add("invisible");
     formDiv.classList.remove("invisible");
-
-
   }
 
   start();

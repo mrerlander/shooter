@@ -1,52 +1,73 @@
 body {
-    padding-bottom: 5rem;
-  }
+  padding-bottom: 5rem;
+}
 
-  #study-div, #form-div {
-    padding-top: 15rem;
-    height: 95%;
-  }
+#study-div,
+#form-div {
+  padding-top: 15rem;
+  height: 95%;
+}
 
-  #practice, #practice-complete, #score-div {
-    padding-top: 15rem
-  }
+#practice,
+#practice-complete,
+#score-div {
+  padding-top: 15rem;
+}
 
-  #instructions {
-    padding-top: 5rem;
-  }
-  
-  #debrief {
-    padding-top: 5rem;
-  }
-  
-  .btn-outline-dark.focus, .btn-outline-dark:focus {
-    box-shadow: none;
-  }
-  
-  .btn-outline-dark:hover {
-    color: #343a40;
-    background-color: transparent;
-  }
+#instructions {
+  padding-top: 5rem;
+}
 
-  #start-div {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-  }
+#debrief {
+  padding-top: 5rem;
+}
 
-  .visible {
-    display: block;
-  }
-  .invisible {
-    display: none;
-  }
+.btn-outline-dark.focus,
+.btn-outline-dark:focus {
+  box-shadow: none;
+}
 
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 20rem;
-  }
+.btn-outline-dark:hover {
+  color: #343a40;
+  background-color: transparent;
+}
+
+.radio-card {
+  width: 100px;
+  height: 152.859px;
+}
+
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px blue;
+}
+
+#start-div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+}
+
+.visible {
+  display: block;
+}
+.invisible {
+  display: none;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 20rem;
+}
