@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   document.addEventListener("keydown", function (e) {
-    if (!fired) {
+    if (!fired && e.key == "i" || e.key == "e") {
       fired = true;
       clearTimeout(shooterTimer);
       key = e.key;
