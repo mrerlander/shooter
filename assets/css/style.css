@@ -1,14 +1,14 @@
 body {
     padding-bottom: 5rem;
   }
-  
-  #rating-div {
-    padding-top: 1rem;
-    padding-bottom: 2rem;
+
+  #study-div, #form-div {
+    padding-top: 15rem;
+    height: 95%;
   }
 
-  #study-div {
-    padding-top: 5rem;
+  #practice, #practice-complete, #score-div {
+    padding-top: 15rem
   }
 
   #instructions {
@@ -19,14 +19,6 @@ body {
     padding-top: 5rem;
   }
   
-  #similar2 {
-    display: none;
-  }
-  
-  .rating-btn {
-    border-radius: 4px;
-  }
-  
   .btn-outline-dark.focus, .btn-outline-dark:focus {
     box-shadow: none;
   }
@@ -34,10 +26,6 @@ body {
   .btn-outline-dark:hover {
     color: #343a40;
     background-color: transparent;
-  }
-  
-  .form-padding {
-    padding-bottom: 40px;
   }
 
   #start-div {
@@ -49,19 +37,16 @@ body {
   }
 
   .visible {
-    visibility: visible;
+    display: block;
   }
   .invisible {
-    visibility: hidden;
+    display: none;
   }
-  
-  @media all and (max-width: 575px) {
-  
-    #similar {
-      display: none;
-    }
-  
-    #similar2 {
-      display: block;
-    }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 20rem;
   }

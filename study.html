@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-database.js"></script>
+    <script type="text/javascript" src="./assets/js/app.js"></script>
+    <title>Understanding the Decision to Use Deadly Force</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="study-div" class="row justify-content-center">
+        <div id="practice" class="col-12 text-center font-weight-bold">
+          <p>Remember, press "i" for shoot and "e" for don't shoot.</p>
+
+          <p>Get Ready</p>
+        </div>
+        <div id="trial-div" class="col-12 text-center font-weight-bold">
+          <div id="trial-img">
+            <img
+              id="background-image"
+              src=""
+              class="img-fluid mx-auto d-block"
+            />
+          </div>
+        </div>
+        <div id="score-div" class="invisible">
+          <div class="col-12 text-center font-weight-bold">
+            <h3 id="shot"></h3>
+            <h3 id="points"></h3>
+            <h3 id="total"></h3>
+          </div>
+        </div>
+        <div
+          id="practice-complete"
+          class="invisible"
+        >
+          <div class="col-12 text-center font-weight-bold">
+            <p>
+              You have now completed the practice trials and are ready to move
+              on to the test phase of the experiment.
+            </p>
+
+            <p>
+              Again, please make sure to respond as quickly and as accurately as
+              possible.
+            </p>
+
+            <p>Press the space bar to begin the test trials.</p>
+          </div>
+        </div>
+      </div>
+      <div id="form-div" class="row justify-content-center invisible">
+        <div id="trials-complete" class="row justify-content-center">
+          <div class="col-12 text-center font-weight-bold">
+            <p>You have now completed the study!</p>
+
+            <p>
+              We only need a couple more things from you. First, we need to be
+              able to match up your data from this session to your second
+              session, which you will complete following your upcoming training.
+              To maintain your anonymity, we will show you a series of images
+              and we'd like you to select the image you like best. Please
+              remember your responses or write them down somewhere safe. You'll
+              be shown these same images in your second session.
+            </p>
+          </div>
+        </div>
+        <div id="form" class="row justify-content-center">
+          <p>form here</p>
+        </div>
+      </div>
+    </div>
+    <div id="legend-div" class="footer">
+      <div class="row justify-content-between">
+        <div class="col-3">
+          <p class="font-weight-bold text-right">E - don't shoot</p>
+        </div>
+        <div class="col-3">
+          <p class="font-weight-bold text-left">I - shoot</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
