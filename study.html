@@ -24,11 +24,6 @@
           id="study-div"
           class="row justify-content-center align-items-center"
         >
-          <div id="practice" class="col-12 text-center font-weight-bold align-self-end ">
-            <p>Remember, press "i" for shoot and "e" for don't shoot.</p>
-
-            <p>Get Ready</p>
-          </div>
           <div id="trial-div" class="col-12 text-center font-weight-bold">
             <div id="trial-img">
               <img
@@ -46,7 +41,7 @@
             </div>
           </div>
           <div id="practice-complete" class="invisible">
-            <div class="col-12 text-center font-weight-bold align-self-end">
+            <div id="complete-one" class="col-12 text-center font-weight-bold align-self-end">
               <p>
                 You have now completed the practice trials and are ready to move
                 on to the test phase of the experiment.
@@ -57,9 +52,24 @@
                 as possible.
               </p>
 
-              <p>Press the space bar to begin the test trials.</p>
+              <p>Press the space bar to continue</p>
+            </div>
+            <div id="complete-two" class="col-12 text-center font-weight-bold align-self-end invisible">
+              <p>
+               Remember:
+              </p>
+
+              <p>
+                If the target is ARMED press the "i" key on your keyboard.
+              </p>
+              <p>
+                If the target is UNARMED press the "e" key on your keyboard.
+              </p>
+
+              <p>Press the space bar to begin the test trials</p>
             </div>
           </div>
+          <h3 id="countdown-timer" class="col-12 text-center font-weight-bold align-self-end "></h3>
         </div>
         <div id="form-div" class="row justify-content-center invisible">
           <div id="trials-complete" class="row justify-content-center">

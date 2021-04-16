@@ -1,28 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let checkBox = document.getElementById("consent");
-  let nextBtn = document.getElementById("submit-button");
-  let instructionsBtn = document.getElementById("instructions-button");
-  let readyDiv = document.getElementById("practice");
-  let image = document.getElementById("background-image");
-  let trialDiv = document.getElementById("trial-div");
-  let scoreDiv = document.getElementById("score-div");
-  let shotTextDiv = document.getElementById("shot");
-  let shotPointsDiv = document.getElementById("points");
-  let shotTotalDiv = document.getElementById("total");
-  let realStartDiv = document.getElementById("practice-complete");
-  let footer = document.getElementById("legend-div");
-  let studyDiv = document.getElementById("study-div");
-  let formDiv = document.getElementById("form-div");
-  let form = document.getElementById("form");
-  let cardAppendDiv = document.getElementById("card-append");
-  let beforeForm = document.getElementById("before-form");
-  let afterForm = document.getElementById("after-form");
-  let surveyURL = "https://csunsbs.qualtrics.com/jfe/form/SV_cSEQTYWt6Ykh5Ii?id="
+  const checkBox = document.getElementById("consent");
+  const nextBtn = document.getElementById("submit-button");
+  const instructionsBtn = document.getElementById("instructions-button");
+  const readyDiv = document.getElementById("practice");
+  const image = document.getElementById("background-image");
+  const trialDiv = document.getElementById("trial-div");
+  const scoreDiv = document.getElementById("score-div");
+  const shotTextDiv = document.getElementById("shot");
+  const shotPointsDiv = document.getElementById("points");
+  const shotTotalDiv = document.getElementById("total");
+  const realStartDiv = document.getElementById("practice-complete");
+  const practiceOne = document.getElementById("complete-one");
+  const practiceTwo = document.getElementById("complete-two");
+  const footer = document.getElementById("legend-div");
+  const studyDiv = document.getElementById("study-div");
+  const formDiv = document.getElementById("form-div");
+  const form = document.getElementById("form");
+  const cardAppendDiv = document.getElementById("card-append");
+  const beforeForm = document.getElementById("before-form");
+  const afterForm = document.getElementById("after-form");
+  const instructionsOne = document.getElementById("instructions-one");
+  const instructionsTwo = document.getElementById("instructions-two");
+  const instructionsThree = document.getElementById("instructions-three");
+  const instructionsFour = document.getElementById("instructions-four");
+  const timerDiv = document.getElementById("countdown-timer");
+  let surveyURL =
+    "https://csunsbs.qualtrics.com/jfe/form/SV_cSEQTYWt6Ykh5Ii?id=";
   let allDone = false;
   let trialResults = [];
   let gun;
   let shotText;
   let shotPoints;
+  let instructionsCounter = 0;
   let count = 0;
   let total = 0;
   let shooterTimer;
@@ -373,9 +382,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (instructionsBtn) {
+    document.addEventListener("keydown", function (e) {
+      if (instructionsCounter == 3 && e.key == " ") {
+        window.location.href = "study.html";
+      }
+    });
+
     instructionsBtn.addEventListener("click", function (e) {
       e.preventDefault;
-      window.location.href = "study.html";
+      instructionsCounter++;
+      switch (instructionsCounter) {
+        case 1:
+          instructionsOne.classList.add("invisible");
+          instructionsTwo.classList.remove("invisible");
+          break;
+        case 2:
+          instructionsTwo.classList.add("invisible");
+          instructionsThree.classList.remove("invisible");
+          break;
+        case 3:
+          instructionsThree.classList.add("invisible");
+          instructionsBtn.classList.add("invisible");
+          instructionsFour.classList.remove("invisible");
+          break;
+        default:
+          instructionsCounter = 0;
+          break;
+      }
     });
   }
 
@@ -402,12 +435,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function getChecked(cardArray) {
-    
     for (let i = 0; i < cardArray.length; i++) {
       if (cardArray[i].checked) {
         cardImage = new Image();
         cardImage.classList.add("radio-card");
-        cardImage.src = cardArray[i].nextElementSibling.firstChild.src
+        cardImage.src = cardArray[i].nextElementSibling.firstChild.src;
         cardArr.push(cardImage);
         return cardArray[i].value;
       }
@@ -430,7 +462,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let database = firebase.database();
 
   function userFirstTimeCallback(exists) {
-    
     if (exists) {
       form.reset();
       alert(
@@ -445,11 +476,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function checkForFirstTime(userId) {
     let ref = database.ref();
     let exists;
-    ref.child(userId).once("value", function (snapshot) {
-      exists = snapshot.val() !== null;
-    }).then(function(){
-      userFirstTimeCallback(exists);
-    });
+    ref
+      .child(userId)
+      .once("value", function (snapshot) {
+        exists = snapshot.val() !== null;
+      })
+      .then(function () {
+        userFirstTimeCallback(exists);
+      });
   }
 
   function writeUserData(userRef) {
@@ -458,28 +492,37 @@ document.addEventListener("DOMContentLoaded", function () {
       beforeForm.classList.add("invisible");
       afterForm.classList.remove("invisible");
       allDone = true;
-      for(i = 0; i < cardArr.length; i++){
+      for (i = 0; i < cardArr.length; i++) {
         cardAppendDiv.appendChild(cardArr[i]);
       }
     });
   }
 
+  let practiceCount = 0;
+
   document.addEventListener("keydown", function (e) {
-    if (!fired && e.key == "i" || e.key == "e") {
+    if ((!fired && e.key == "i") || e.key == "e") {
       fired = true;
       clearTimeout(shooterTimer);
       key = e.key;
       showScore(realTrial);
     }
-    if (!practice && e.key == " ") {
-      practice = true;
-      realStartDiv.classList.add("invisible");
-      readyDiv.classList.remove("invisible");
-      setTimeout(trial, 5000);
+    if (!practice && e.key == " " && practiceCount < 2) {
+      practiceCount++;
+      if(practiceCount == 1){
+        practiceOne.classList.add("invisible");
+        practiceTwo.classList.remove("invisible");
+      }
+      if(practiceCount == 2){
+        practiceTwo.classList.add("invisible");        
+        timerDiv.classList.remove("invisible");
+        start();
+      }
     }
-    if (allDone && e.key == " "){
+    if (allDone && e.key == " ") {
       window.location.href = surveyURL + id;
     }
+
   });
 
   class Trial {}
@@ -549,7 +592,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showBackground(real) {
-    
     fired = true;
     if (real) {
       arr = trialImages;
@@ -603,7 +645,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function trial() {
     key = null;
-    readyDiv.classList.add("invisible");
+    timerDiv.classList.add("invisible");
     scoreDiv.classList.add("invisible");
     if (count < 100) {
       if (bgCounter == 0) {
@@ -625,11 +667,27 @@ document.addEventListener("DOMContentLoaded", function () {
     practice = false;
   }
 
+  let countdownTimer;
+  let countdownInterval;
   function start() {
-    setTimeout(function () {
-      readyDiv.classList.add("invisible");
-      practiceTrial();
-    }, 5000);
+    countdownTimer = 6;
+    countdownInterval = setInterval(timer, 1000);
+  }
+
+  function timer() {
+    countdownTimer = countdownTimer - 1;
+    if (countdownTimer == 0) {
+      timerDiv.textContent = "BEGIN";
+    } else {
+      timerDiv.textContent = countdownTimer;
+    }
+
+    if (countdownTimer < 0) {
+      clearInterval(countdownInterval);
+      timerDiv.textContent = "";
+      timerDiv.classList.add("invisible");
+      (realTrial) ? trial() : practiceTrial();
+    }
   }
 
   function complete() {

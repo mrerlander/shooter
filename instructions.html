@@ -15,23 +15,12 @@
   </head>
   <body>
     <div class="container">
-      <div id="instructions">
-        <div id="instructions-one">
+      <div id="instructions" class="row justify-content-center">
+        <div id="instructions-one" class="col-8">
           <p>
-            <b class="font-weight-bold" style="display: block">INSTRUCTIONS: </b
-            >In this experiment, you will be presented with images of armed and
-            unarmed male targets. Your job is to "shoot" all the armed targets
-            by pressing the "i" key on your computer and to indicate "don't
-            shoot" to all the unarmed targets by pressing the "e" key on the
-            computer. Please respond as quickly and accurately as you can on
-            each trial. Your response and reaction time will be recorded. At the
-            end of each trial, you will recieve feedback and your score. You
-            will begin by completing a short practice round.
-          </p>
-          <p>
-            <b class="font-weight-bold" style="display: block">NOTES: </b>
-          </p>
-          <p>
+            <b class="font-weight-bold" style="display: block"
+              >BEFORE YOU BEGIN:
+            </b>
             <b class="font-weight-bold">1. </b>
             Please make your browser window as large as possible.
           </p>
@@ -49,6 +38,43 @@
             aside other tasks and distractions until the study is over.
           </p>
         </div>
+        <div id="instructions-two" class="invisible col-8">
+          <p>
+            <b class="font-weight-bold" style="display: block"
+              >INSTRUCTIONS:
+            </b>
+            In this experiment, you will be presented with images of male
+            targets. Your job is to decide whether the target is armed or
+            unarmed.
+          </p>
+          <p class="text-center">
+            If the target is ARMED press the “i” key on your keyboard.
+          </p>
+          <p class="text-center">
+            If the target is UNARMED press the “e” key on your keyboard.
+          </p>
+          <p>
+            Please respond as quickly and accurately as you can on each trial.
+            Your response and reaction time will be recorded.
+          </p>
+        </div>
+        <div id="instructions-three" class="invisible col-8">
+          <p>
+            <b class="font-weight-bold" style="display: block">SCORE: </b>
+            You will earn points and lose points depending on your responses. At
+            the end of each trial, you will receive feedback and points. You
+            will also see a running tally of your score.
+          </p>
+        </div>
+        <div id="instructions-four" class="invisible col-8">
+          <p class="text-center">
+            <b class="font-weight-bold" style="display: block"
+              >Please press the space bar to start the practice round.</b
+            >
+          </p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
         <button
           type="button"
           id="instructions-button"
