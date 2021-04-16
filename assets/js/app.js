@@ -633,7 +633,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function complete() {
-    footer.classList.add("invisible");
+    // footer.classList.add("invisible");
     studyDiv.classList.add("invisible");
     formDiv.classList.remove("invisible");
   }
