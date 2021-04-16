@@ -589,7 +589,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function practiceTrial() {
     key = null;
     scoreDiv.classList.add("invisible");
-    if (count < 2) {
+    if (count < 16) {
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
@@ -605,7 +605,7 @@ document.addEventListener("DOMContentLoaded", function () {
     key = null;
     readyDiv.classList.add("invisible");
     scoreDiv.classList.add("invisible");
-    if (count < 2) {
+    if (count < 100) {
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
