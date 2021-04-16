@@ -17,602 +17,613 @@
     <script type="text/javascript" src="./assets/js/app.js"></script>
     <title>Understanding the Decision to Use Deadly Force</title>
   </head>
-  <body>
-    <div class="container-fluid">
-      <div id="study-div" class="row justify-content-center">
-        <div id="practice" class="col-12 text-center font-weight-bold">
-          <p>Remember, press "i" for shoot and "e" for don't shoot.</p>
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <div class="container">
+        <div
+          id="study-div"
+          class="row justify-content-center align-items-center"
+        >
+          <div id="practice" class="col-12 text-center font-weight-bold">
+            <p>Remember, press "i" for shoot and "e" for don't shoot.</p>
 
-          <p>Get Ready</p>
-        </div>
-        <div id="trial-div" class="col-12 text-center font-weight-bold">
-          <div id="trial-img">
-            <img
-              id="background-image"
-              src=""
-              class="img-fluid mx-auto d-block"
-            />
+            <p>Get Ready</p>
           </div>
-        </div>
-        <div id="score-div" class="invisible">
-          <div class="col-12 text-center font-weight-bold">
-            <h3 id="shot"></h3>
-            <h3 id="points"></h3>
-            <h3 id="total"></h3>
+          <div id="trial-div" class="col-12 text-center font-weight-bold">
+            <div id="trial-img">
+              <img
+                id="background-image"
+                src=""
+                class="img-fluid mx-auto d-block"
+              />
+            </div>
           </div>
-        </div>
-        <div id="practice-complete" class="invisible">
-          <div class="col-12 text-center font-weight-bold">
-            <p>
-              You have now completed the practice trials and are ready to move
-              on to the test phase of the experiment.
-            </p>
-
-            <p>
-              Again, please make sure to respond as quickly and as accurately as
-              possible.
-            </p>
-
-            <p>Press the space bar to begin the test trials.</p>
+          <div id="score-div" class="invisible">
+            <div class="col-12 text-center font-weight-bold">
+              <h3 id="shot"></h3>
+              <h3 id="points"></h3>
+              <h3 id="total"></h3>
+            </div>
           </div>
-        </div>
-      </div>
-      <div id="form-div" class="row justify-content-center invisible">
-        <div id="trials-complete" class="row justify-content-center">
-          <div class="col-10 text-center font-weight-bold">
-            <p>You have now completed the study!</p>
-
-            <p id="before-form">
-              We only need a couple more things from you. First, we need to be
-              able to match up your data from this session to your second
-              session, which you will complete following your upcoming training.
-              To maintain your anonymity, we will show you a series of images
-              and we'd like you to select the image you like best. Please
-              remember your responses or write them down somewhere safe. You'll
-              be shown these same images in your second session.
-            </p>
-            <div id="after-form" class="invisible">
+          <div id="practice-complete" class="invisible">
+            <div class="col-12 text-center font-weight-bold">
               <p>
-                Here are your choices. Please write them down or take a picture
-                with your cell phone so we can match your score here with the
-                one we collect after your training.
+                You have now completed the practice trials and are ready to move
+                on to the test phase of the experiment.
               </p>
+
               <p>
-                Press the space bar to complete some basic demographic questions
-                for us.
+                Again, please make sure to respond as quickly and as accurately
+                as possible.
               </p>
+
+              <p>Press the space bar to begin the test trials.</p>
             </div>
           </div>
         </div>
-        <div class="row justify-content-center">
-          <form id="form">
-            <div class="form-group row">
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="2C"
-                value="2C"
-                autocomplete="off"
-                required
-              />
-              <label class="btn" for="2C"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/2C.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="2D"
-                value="2D"
-                autocomplete="off"
-              />
-              <label class="btn" for="2D"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/2D.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="2H"
-                value="2H"
-                autocomplete="off"
-              />
-              <label class="btn" for="2H"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/2H.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="2S"
-                value="2S"
-                autocomplete="off"
-              />
-              <label class="btn" for="2S"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/2S.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="3C"
-                value="3C"
-                autocomplete="off"
-              />
-              <label class="btn" for="3C"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/3C.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="3D"
-                value="3D"
-                autocomplete="off"
-              />
-              <label class="btn" for="3D"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/3D.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="3H"
-                value="3H"
-                autocomplete="off"
-              />
-              <label class="btn" for="3H"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/3H.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="lowcardradio"
-                id="3S"
-                value="3S"
-                autocomplete="off"
-              />
-              <label class="btn" for="3S"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/3S.jpg"
-              /></label>
-            </div>
+        <div id="form-div" class="row justify-content-center invisible">
+          <div id="trials-complete" class="row justify-content-center">
+            <div class="col-10 text-center font-weight-bold">
+              <div class="row justify-content-center">
+                <p>You have now completed the study!</p>
 
-            <div class="form-group row">
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="5C"
-                value="5C"
-                autocomplete="off"
-                required
-              />
-              <label class="btn" for="5C"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/5C.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="5D"
-                value="5D"
-                autocomplete="off"
-              />
-              <label class="btn" for="5D"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/5D.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="5H"
-                value="5H"
-                autocomplete="off"
-              />
-              <label class="btn" for="5H"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/5H.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="5S"
-                value="5S"
-                autocomplete="off"
-              />
-              <label class="btn" for="5S"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/5S.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="6C"
-                value="6C"
-                autocomplete="off"
-              />
-              <label class="btn" for="6C"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/6C.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="6D"
-                value="6D"
-                autocomplete="off"
-              />
-              <label class="btn" for="6D"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/6D.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="6H"
-                value="6H"
-                autocomplete="off"
-              />
-              <label class="btn" for="6H"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/6H.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="midcardradio"
-                id="6S"
-                value="6S"
-                autocomplete="off"
-              />
-              <label class="btn" for="6S"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/6S.jpg"
-              /></label>
+                <p id="before-form">
+                  We only need a couple more things from you. First, we need to
+                  be able to match up your data from this session to your second
+                  session, which you will complete following your upcoming
+                  training. To maintain your anonymity, we will show you a
+                  series of images and we'd like you to select the image you
+                  like best. Please remember your responses or write them down
+                  somewhere safe. You'll be shown these same images in your
+                  second session.
+                </p>
+                <div id="after-form" class="col-12 invisible">
+                  <p>
+                    Here are your choices. Please write them down or take a
+                    picture with your cell phone so we can match your score here
+                    with the one we collect after your training.
+                  </p>
+                  <div id="card-append" class="col-12"></div>
+                  <p>
+                    Press the space bar to complete some basic demographic
+                    questions for us.
+                  </p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="row justify-content-center">
+            <form id="form">
+              <div class="form-group row">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="2C"
+                  value="2C"
+                  autocomplete="off"
+                  required
+                />
+                <label class="btn" for="2C"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/2C.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="2D"
+                  value="2D"
+                  autocomplete="off"
+                />
+                <label class="btn" for="2D"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/2D.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="2H"
+                  value="2H"
+                  autocomplete="off"
+                />
+                <label class="btn" for="2H"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/2H.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="2S"
+                  value="2S"
+                  autocomplete="off"
+                />
+                <label class="btn" for="2S"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/2S.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="3C"
+                  value="3C"
+                  autocomplete="off"
+                />
+                <label class="btn" for="3C"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/3C.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="3D"
+                  value="3D"
+                  autocomplete="off"
+                />
+                <label class="btn" for="3D"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/3D.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="3H"
+                  value="3H"
+                  autocomplete="off"
+                />
+                <label class="btn" for="3H"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/3H.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="lowcardradio"
+                  id="3S"
+                  value="3S"
+                  autocomplete="off"
+                />
+                <label class="btn" for="3S"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/3S.jpg"
+                /></label>
+              </div>
 
-            <div class="form-group row">
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="9C"
-                value="9C"
-                autocomplete="off"
-                required
-              />
-              <label class="btn" for="9C"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/9C.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="9D"
-                value="9D"
-                autocomplete="off"
-              />
-              <label class="btn" for="9D"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/9D.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="9H"
-                value="9H"
-                autocomplete="off"
-              />
-              <label class="btn" for="9H"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/9H.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="9S"
-                value="9S"
-                autocomplete="off"
-              />
-              <label class="btn" for="9S"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/9S.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="10C"
-                value="10C"
-                autocomplete="off"
-              />
-              <label class="btn" for="10C"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/10C.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="10D"
-                value="10D"
-                autocomplete="off"
-              />
-              <label class="btn" for="10D"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/10D.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="10H"
-                value="10H"
-                autocomplete="off"
-              />
-              <label class="btn" for="10H"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/10H.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="highcardradio"
-                id="10S"
-                value="10S"
-                autocomplete="off"
-              />
-              <label class="btn" for="10S"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/10S.jpg"
-              /></label>
-            </div>
+              <div class="form-group row">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="5C"
+                  value="5C"
+                  autocomplete="off"
+                  required
+                />
+                <label class="btn" for="5C"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/5C.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="5D"
+                  value="5D"
+                  autocomplete="off"
+                />
+                <label class="btn" for="5D"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/5D.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="5H"
+                  value="5H"
+                  autocomplete="off"
+                />
+                <label class="btn" for="5H"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/5H.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="5S"
+                  value="5S"
+                  autocomplete="off"
+                />
+                <label class="btn" for="5S"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/5S.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="6C"
+                  value="6C"
+                  autocomplete="off"
+                />
+                <label class="btn" for="6C"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/6C.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="6D"
+                  value="6D"
+                  autocomplete="off"
+                />
+                <label class="btn" for="6D"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/6D.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="6H"
+                  value="6H"
+                  autocomplete="off"
+                />
+                <label class="btn" for="6H"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/6H.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="midcardradio"
+                  id="6S"
+                  value="6S"
+                  autocomplete="off"
+                />
+                <label class="btn" for="6S"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/6S.jpg"
+                /></label>
+              </div>
 
-            <div class="form-group row">
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="QC"
-                value="QC"
-                autocomplete="off"
-                required
-              />
-              <label class="btn" for="QC"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/QC.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="QD"
-                value="QD"
-                autocomplete="off"
-              />
-              <label class="btn" for="QD"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/QD.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="QH"
-                value="QH"
-                autocomplete="off"
-              />
-              <label class="btn" for="QH"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/QH.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="QS"
-                value="QS"
-                autocomplete="off"
-              />
-              <label class="btn" for="QS"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/QS.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="KC"
-                value="KC"
-                autocomplete="off"
-              />
-              <label class="btn" for="KC"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/KC.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="KD"
-                value="KD"
-                autocomplete="off"
-              />
-              <label class="btn" for="KD"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/KD.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="KH"
-                value="KH"
-                autocomplete="off"
-              />
-              <label class="btn" for="KH"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/KH.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="facecardradio"
-                id="KS"
-                value="KS"
-                autocomplete="off"
-              />
-              <label class="btn" for="KS"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/KS.jpg"
-              /></label>
-            </div>
+              <div class="form-group row">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="9C"
+                  value="9C"
+                  autocomplete="off"
+                  required
+                />
+                <label class="btn" for="9C"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/9C.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="9D"
+                  value="9D"
+                  autocomplete="off"
+                />
+                <label class="btn" for="9D"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/9D.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="9H"
+                  value="9H"
+                  autocomplete="off"
+                />
+                <label class="btn" for="9H"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/9H.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="9S"
+                  value="9S"
+                  autocomplete="off"
+                />
+                <label class="btn" for="9S"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/9S.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="10C"
+                  value="10C"
+                  autocomplete="off"
+                />
+                <label class="btn" for="10C"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/10C.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="10D"
+                  value="10D"
+                  autocomplete="off"
+                />
+                <label class="btn" for="10D"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/10D.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="10H"
+                  value="10H"
+                  autocomplete="off"
+                />
+                <label class="btn" for="10H"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/10H.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="highcardradio"
+                  id="10S"
+                  value="10S"
+                  autocomplete="off"
+                />
+                <label class="btn" for="10S"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/10S.jpg"
+                /></label>
+              </div>
 
-            <div class="form-group row">
-              <input
-                type="radio"
-                class="btn-check"
-                name="cardbackradio"
-                id="blue"
-                value="blue"
-                autocomplete="off"
-                required
-              />
-              <label class="btn" for="blue"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/blue_back.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="cardbackradio"
-                id="gray"
-                value="gray"
-                autocomplete="off"
-              />
-              <label class="btn" for="gray"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/gray_back.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="cardbackradio"
-                id="green"
-                value="green"
-                autocomplete="off"
-              />
-              <label class="btn" for="green"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/green_back.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="cardbackradio"
-                id="purple"
-                value="purple"
-                autocomplete="off"
-              />
-              <label class="btn" for="purple"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/purple_back.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="cardbackradio"
-                id="red"
-                value="red"
-                autocomplete="off"
-              />
-              <label class="btn" for="red"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/red_back.jpg"
-              /></label>
-              <input
-                type="radio"
-                class="btn-check"
-                name="cardbackradio"
-                id="yellow"
-                value="yellow"
-                autocomplete="off"
-              />
-              <label class="btn" for="yellow"
-                ><img
-                  class="img-fluid radio-card"
-                  src="./assets/images/cards/yellow_back.jpg"
-              /></label>
-            </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
-          </form>
+              <div class="form-group row">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="QC"
+                  value="QC"
+                  autocomplete="off"
+                  required
+                />
+                <label class="btn" for="QC"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/QC.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="QD"
+                  value="QD"
+                  autocomplete="off"
+                />
+                <label class="btn" for="QD"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/QD.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="QH"
+                  value="QH"
+                  autocomplete="off"
+                />
+                <label class="btn" for="QH"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/QH.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="QS"
+                  value="QS"
+                  autocomplete="off"
+                />
+                <label class="btn" for="QS"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/QS.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="KC"
+                  value="KC"
+                  autocomplete="off"
+                />
+                <label class="btn" for="KC"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/KC.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="KD"
+                  value="KD"
+                  autocomplete="off"
+                />
+                <label class="btn" for="KD"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/KD.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="KH"
+                  value="KH"
+                  autocomplete="off"
+                />
+                <label class="btn" for="KH"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/KH.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="facecardradio"
+                  id="KS"
+                  value="KS"
+                  autocomplete="off"
+                />
+                <label class="btn" for="KS"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/KS.jpg"
+                /></label>
+              </div>
+
+              <div class="form-group row">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="cardbackradio"
+                  id="blue"
+                  value="blue"
+                  autocomplete="off"
+                  required
+                />
+                <label class="btn" for="blue"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/blue_back.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="cardbackradio"
+                  id="gray"
+                  value="gray"
+                  autocomplete="off"
+                />
+                <label class="btn" for="gray"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/gray_back.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="cardbackradio"
+                  id="green"
+                  value="green"
+                  autocomplete="off"
+                />
+                <label class="btn" for="green"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/green_back.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="cardbackradio"
+                  id="purple"
+                  value="purple"
+                  autocomplete="off"
+                />
+                <label class="btn" for="purple"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/purple_back.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="cardbackradio"
+                  id="red"
+                  value="red"
+                  autocomplete="off"
+                />
+                <label class="btn" for="red"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/red_back.jpg"
+                /></label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="cardbackradio"
+                  id="yellow"
+                  value="yellow"
+                  autocomplete="off"
+                />
+                <label class="btn" for="yellow"
+                  ><img
+                    class="img-fluid radio-card"
+                    src="./assets/images/cards/yellow_back.jpg"
+                /></label>
+              </div>
+              <button type="submit" class="btn btn-secondary">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="legend-div" class="footer">
-      <div class="row justify-content-between">
-        <div class="col-3">
-          <p class="font-weight-bold text-right">E - don't shoot</p>
-        </div>
-        <div class="col-3">
-          <p class="font-weight-bold text-left">I - shoot</p>
+    </main>
+    <!-- <footer id="legend-div" class="footer mt-auto py-3">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-3">
+            <p class="font-weight-bold text-right">E - don't shoot</p>
+          </div>
+          <div class="col-3">
+            <p class="font-weight-bold text-left">I - shoot</p>
+          </div>
         </div>
       </div>
-    </div>
+    </footer> -->
   </body>
 </html>

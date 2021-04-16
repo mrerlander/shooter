@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let studyDiv = document.getElementById("study-div");
   let formDiv = document.getElementById("form-div");
   let form = document.getElementById("form");
-  let cardAppendDiv = document.getElementById("trials-complete");
+  let cardAppendDiv = document.getElementById("card-append");
   let beforeForm = document.getElementById("before-form");
   let afterForm = document.getElementById("after-form");
   let surveyURL = "https://csunsbs.qualtrics.com/jfe/form/SV_cSEQTYWt6Ykh5Ii?id="
@@ -406,6 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 0; i < cardArray.length; i++) {
       if (cardArray[i].checked) {
         cardImage = new Image();
+        cardImage.classList.add("radio-card");
         cardImage.src = cardArray[i].nextElementSibling.firstChild.src
         cardArr.push(cardImage);
         return cardArray[i].value;
@@ -588,7 +589,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function practiceTrial() {
     key = null;
     scoreDiv.classList.add("invisible");
-    if (count < 16) {
+    if (count < 2) {
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
@@ -604,7 +605,7 @@ document.addEventListener("DOMContentLoaded", function () {
     key = null;
     readyDiv.classList.add("invisible");
     scoreDiv.classList.add("invisible");
-    if (count < 100) {
+    if (count < 2) {
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
