@@ -16,6 +16,10 @@ body {
   padding-top: 5rem;
 }
 
+.form-check {
+  margin-bottom: 2rem;
+}
+
 .btn-outline-dark.focus,
 .btn-outline-dark:focus {
   box-shadow: none;
@@ -31,7 +35,7 @@ body {
   height: 152.859px;
 }
 
-[type=radio] { 
+[type=radio].btn-check { 
   position: absolute;
   opacity: 0;
   width: 0;

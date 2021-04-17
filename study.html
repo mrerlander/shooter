@@ -41,7 +41,10 @@
             </div>
           </div>
           <div id="practice-complete" class="invisible">
-            <div id="complete-one" class="col-12 text-center font-weight-bold align-self-end">
+            <div
+              id="complete-one"
+              class="col-12 text-center font-weight-bold align-self-end"
+            >
               <p>
                 You have now completed the practice trials and are ready to move
                 on to the test phase of the experiment.
@@ -54,14 +57,13 @@
 
               <p>Press the space bar to continue</p>
             </div>
-            <div id="complete-two" class="col-12 text-center font-weight-bold align-self-end invisible">
-              <p>
-               Remember:
-              </p>
+            <div
+              id="complete-two"
+              class="col-12 text-center font-weight-bold align-self-end invisible"
+            >
+              <p>Remember:</p>
 
-              <p>
-                If the target is ARMED press the "i" key on your keyboard.
-              </p>
+              <p>If the target is ARMED press the "i" key on your keyboard.</p>
               <p>
                 If the target is UNARMED press the "e" key on your keyboard.
               </p>
@@ -69,7 +71,46 @@
               <p>Press the space bar to begin the test trials</p>
             </div>
           </div>
-          <h3 id="countdown-timer" class="col-12 text-center font-weight-bold align-self-end "></h3>
+          <h3
+            id="countdown-timer"
+            class="col-12 text-center font-weight-bold align-self-end"
+          ></h3>
+        </div>
+        <div id="remember" class="row justify-content-center invisible">
+          <form>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="card-combo"
+                id="has-combination"
+                value="yes"
+              />
+              <label class="form-check-label" for="has-combination">
+                I have my card combination from the previous test
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="card-combo"
+                id="no-combination"
+                value="no"
+              />
+              <label class="form-check-label" for="no-combination">
+                I do not have my card combination from the previous test
+              </label>
+            </div>
+            <div class="col-12">
+              <button
+                id="remember-submit"
+                class="btn btn-secondary"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
         <div id="form-div" class="row justify-content-center invisible">
           <div id="trials-complete" class="row justify-content-center">
@@ -94,11 +135,11 @@
                     with the one we collect after your training.
                   </p>
                   <div id="card-append" class="col-12"></div>
-                  <p>
-                    Press the space bar to complete some basic demographic
-                    questions for us.
-                  </p>
                 </div>
+                <p id="second-complete" class="invisible">
+                  Press the space bar to complete some basic demographic
+                  questions for us.
+                </p>
               </div>
             </div>
           </div>

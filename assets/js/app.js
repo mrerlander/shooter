@@ -24,10 +24,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const instructionsThree = document.getElementById("instructions-three");
   const instructionsFour = document.getElementById("instructions-four");
   const timerDiv = document.getElementById("countdown-timer");
+  const rememberDiv = document.getElementById("remember");
+  const rememberSubmit = document.getElementById("remember-submit");
+  const secondCompleteDiv = document.getElementById("second-complete");
+  const secondStudy = document.getElementById("second-study");
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const test = urlParams.get("test");
+  const storage = window.localStorage;
   let surveyURL =
     "https://csunsbs.qualtrics.com/jfe/form/SV_cSEQTYWt6Ykh5Ii?id=";
   let allDone = false;
   let trialResults = [];
+  let testString;
   let gun;
   let shotText;
   let shotPoints;
@@ -364,6 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   if (checkBox) {
+    storage.setItem("test", test);
     checkBox.onchange = function () {
       if (this.checked) {
         nextBtn.disabled = false;
@@ -375,13 +385,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (nextBtn) {
     nextBtn.addEventListener("click", function (e) {
-      e.preventDefault;
+      e.preventDefault();
       localStorage.setItem("consent", "true");
       window.location.href = "instructions.html";
     });
   }
 
+  if (rememberSubmit) {
+    rememberSubmit.addEventListener("click", function (e) {
+      e.preventDefault();
+      let pw = document.getElementsByName("card-combo");
+      for (i = 0; i < pw.length; i++) {
+        if (pw[i].checked && pw[i].value == "yes") {
+          rememberDiv.classList.add("invisible");
+          formDiv.classList.remove("invisible");
+          break;
+        } else if(pw[i].checked && pw[i].value == "no") {
+          form.classList.add("invisible");
+          beforeForm.classList.add("invisible");
+          rememberDiv.classList.add("invisible");
+          afterForm.classList.add("invisible");
+          id = Date.now();
+          let userRef = database.ref(id + "/" + testString);
+          writeUserData(userRef);
+          break;
+        }
+      }
+    });
+  }
+
   if (instructionsBtn) {
+    if(storage.getItem("test") == "two"){
+        secondStudy.classList.remove("invisible");
+        instructionsCounter--;
+    } else {
+      instructionsOne.classList.remove("invisible");
+    }
+
     document.addEventListener("keydown", function (e) {
       if (instructionsCounter == 3 && e.key == " ") {
         window.location.href = "study.html";
@@ -389,9 +429,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     instructionsBtn.addEventListener("click", function (e) {
-      e.preventDefault;
+      e.preventDefault();
       instructionsCounter++;
+      console.log(instructionsCounter)
       switch (instructionsCounter) {
+        case 0:
+          secondStudy.classList.add("invisible");
+          instructionsOne.classList.remove("invisible");
+          break;
         case 1:
           instructionsOne.classList.add("invisible");
           instructionsTwo.classList.remove("invisible");
@@ -406,7 +451,6 @@ document.addEventListener("DOMContentLoaded", function () {
           instructionsFour.classList.remove("invisible");
           break;
         default:
-          instructionsCounter = 0;
           break;
       }
     });
@@ -430,7 +474,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       id = lowCard + midCard + highCard + faceCard + cardBack;
 
-      checkForFirstTime(id);
+      if (testString == "firstStudy") {
+        checkForFirstTime(id);
+      } else {
+        let userRef = database.ref(id + "/" + testString);
+        writeUserData(userRef);
+      }
     }
   }
 
@@ -468,7 +517,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "That combination already exists. Please select a different assortment of cards."
       );
     } else {
-      let userRef = database.ref(id + "/firstStudy");
+      let userRef = database.ref(id + "/" + testString);
       writeUserData(userRef);
     }
   }
@@ -490,11 +539,15 @@ document.addEventListener("DOMContentLoaded", function () {
     userRef.set(trialResults).then(function () {
       form.classList.add("invisible");
       beforeForm.classList.add("invisible");
+      if(testString != "secondStudy"){
       afterForm.classList.remove("invisible");
-      allDone = true;
       for (i = 0; i < cardArr.length; i++) {
         cardAppendDiv.appendChild(cardArr[i]);
       }
+      }
+      secondCompleteDiv.classList.remove("invisible");
+      formDiv.classList.remove("invisible");
+      allDone = true;
     });
   }
 
@@ -509,20 +562,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (!practice && e.key == " " && practiceCount < 2) {
       practiceCount++;
-      if(practiceCount == 1){
+      if (practiceCount == 1) {
         practiceOne.classList.add("invisible");
         practiceTwo.classList.remove("invisible");
       }
-      if(practiceCount == 2){
-        practiceTwo.classList.add("invisible");        
+      if (practiceCount == 2) {
+        practiceTwo.classList.add("invisible");
         timerDiv.classList.remove("invisible");
         start();
       }
     }
     if (allDone && e.key == " ") {
+      storage.clear();
       window.location.href = surveyURL + id;
     }
-
   });
 
   class Trial {}
@@ -686,14 +739,21 @@ document.addEventListener("DOMContentLoaded", function () {
       clearInterval(countdownInterval);
       timerDiv.textContent = "";
       timerDiv.classList.add("invisible");
-      (realTrial) ? trial() : practiceTrial();
+      realTrial ? trial() : practiceTrial();
     }
   }
 
   function complete() {
     // footer.classList.add("invisible");
     studyDiv.classList.add("invisible");
-    formDiv.classList.remove("invisible");
+    const whichTest = storage.getItem("test");
+    if (whichTest == "two") {
+      rememberDiv.classList.remove("invisible");
+      testString = "secondStudy";
+    } else {
+      formDiv.classList.remove("invisible");
+      testString = "firstStudy";
+    }
   }
 
   start();
