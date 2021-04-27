@@ -553,7 +553,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let practiceCount = 0;
 
-  document.addEventListener("keydown", function (e) {
+  document.addEventListener("keyup", function (e) {
     if (!fired && (e.key == "i" || e.key == "e")) {
       fired = true;
       key = e.key;
