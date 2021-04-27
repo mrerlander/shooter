@@ -554,7 +554,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let practiceCount = 0;
 
   document.addEventListener("keyup", function (e) {
-
+    e.preventDefault();
+    
     if (!fired && (e.key == "i" || e.key == "e")) {
       clearTimeout(shooterTimer);
       fired = true;
@@ -583,7 +584,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showScore(real) {
     count++;
-    
+
     if(!fired){
     fired = true;
     }
