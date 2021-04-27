@@ -554,10 +554,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let practiceCount = 0;
 
   document.addEventListener("keyup", function (e) {
+
     if (!fired && (e.key == "i" || e.key == "e")) {
+      clearTimeout(shooterTimer);
       fired = true;
       key = e.key;
-      clearTimeout(shooterTimer);
       showScore(realTrial);
     }
     if (!practice && e.key == " " && practiceCount < 2) {
@@ -582,7 +583,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showScore(real) {
     count++;
+    
+    if(!fired){
     fired = true;
+    }
+
     if (real) {
       arr = trialImages;
       whichTrial = trial;
