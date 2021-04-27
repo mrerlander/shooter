@@ -555,7 +555,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.addEventListener("keyup", function (e) {
     e.preventDefault();
-    
+
     if (!fired && (e.key == "i" || e.key == "e")) {
       clearTimeout(shooterTimer);
       fired = true;
@@ -585,8 +585,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function showScore(real) {
     count++;
 
-    if(!fired){
-    fired = true;
+    if (!fired) {
+      fired = true;
     }
 
     if (real) {
@@ -629,6 +629,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (real) {
+      
       let today = new Date();
       let todayDateString = today.toLocaleDateString();
       let todayTimeString = today.toLocaleTimeString();
@@ -657,7 +658,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showBackground(real) {
-    fired = true;
+    if (!fired) {
+      fired = true;
+    }
+
     bgCounter++;
     if (real) {
       arr = trialImages;
@@ -684,9 +688,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showShooterBackground(real) {
-    fired = false;
     image.src = shooterBackground;
     image.onload = function () {
+      fired = false;
       bgCounter = 0;
       shooterTimer = setTimeout(showScore, 700, real);
     };
@@ -709,6 +713,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function trial() {
     key = null;
+    if (!fired){
+      fired = true;
+    }
     timerDiv.classList.add("invisible");
     scoreDiv.classList.add("invisible");
     if (count < 100) {
