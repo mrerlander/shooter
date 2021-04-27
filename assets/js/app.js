@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
           rememberDiv.classList.add("invisible");
           formDiv.classList.remove("invisible");
           break;
-        } else if(pw[i].checked && pw[i].value == "no") {
+        } else if (pw[i].checked && pw[i].value == "no") {
           form.classList.add("invisible");
           beforeForm.classList.add("invisible");
           rememberDiv.classList.add("invisible");
@@ -415,9 +415,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (instructionsBtn) {
-    if(storage.getItem("test") == "two"){
-        secondStudy.classList.remove("invisible");
-        instructionsCounter--;
+    if (storage.getItem("test") == "two") {
+      secondStudy.classList.remove("invisible");
+      instructionsCounter--;
     } else {
       instructionsOne.classList.remove("invisible");
     }
@@ -431,7 +431,7 @@ document.addEventListener("DOMContentLoaded", function () {
     instructionsBtn.addEventListener("click", function (e) {
       e.preventDefault();
       instructionsCounter++;
-      console.log(instructionsCounter)
+      console.log(instructionsCounter);
       switch (instructionsCounter) {
         case 0:
           secondStudy.classList.add("invisible");
@@ -539,11 +539,11 @@ document.addEventListener("DOMContentLoaded", function () {
     userRef.set(trialResults).then(function () {
       form.classList.add("invisible");
       beforeForm.classList.add("invisible");
-      if(testString != "secondStudy"){
-      afterForm.classList.remove("invisible");
-      for (i = 0; i < cardArr.length; i++) {
-        cardAppendDiv.appendChild(cardArr[i]);
-      }
+      if (testString != "secondStudy") {
+        afterForm.classList.remove("invisible");
+        for (i = 0; i < cardArr.length; i++) {
+          cardAppendDiv.appendChild(cardArr[i]);
+        }
       }
       secondCompleteDiv.classList.remove("invisible");
       formDiv.classList.remove("invisible");
@@ -554,10 +554,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let practiceCount = 0;
 
   document.addEventListener("keydown", function (e) {
-    if ((!fired && e.key == "i") || e.key == "e") {
+    if (!fired && (e.key == "i" || e.key == "e")) {
       fired = true;
-      clearTimeout(shooterTimer);
       key = e.key;
+      clearTimeout(shooterTimer);
       showScore(realTrial);
     }
     if (!practice && e.key == " " && practiceCount < 2) {
@@ -581,6 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
   class Trial {}
 
   function showScore(real) {
+    count++;
     fired = true;
     if (real) {
       arr = trialImages;
@@ -622,12 +623,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (real) {
+      let today = new Date();
+      let todayDateString = today.toLocaleDateString();
+      let todayTimeString = today.toLocaleTimeString();
+      let todayString = todayDateString + " " + todayTimeString;
       thisTrial = new Trial();
       thisTrial.image = shooterBackground.substring(21);
       thisTrial.shotText = shotText;
       thisTrial.points = shotPoints;
       thisTrial.totalPoints = total;
       thisTrial.trialNumber = count;
+      thisTrial.date = todayString;
       trialResults.push(thisTrial);
     }
 
@@ -646,6 +652,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showBackground(real) {
     fired = true;
+    bgCounter++;
     if (real) {
       arr = trialImages;
       bgArrLoc = Math.floor(Math.random() * arr.length);
@@ -666,7 +673,6 @@ document.addEventListener("DOMContentLoaded", function () {
     image.src = noShooterBackground;
     image.onload = function () {
       trialDiv.classList.remove("invisible");
-      bgCounter++;
       whichTrial();
     };
   }
@@ -675,7 +681,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fired = false;
     image.src = shooterBackground;
     image.onload = function () {
-      count++;
       bgCounter = 0;
       shooterTimer = setTimeout(showScore, 700, real);
     };
