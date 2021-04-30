@@ -560,6 +560,7 @@ document.addEventListener("DOMContentLoaded", function () {
       clearTimeout(shooterTimer);
       fired = true;
       key = e.key;
+      
       showScore(realTrial);
     }
     if (!practice && e.key == " " && practiceCount < 2) {
