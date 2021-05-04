@@ -556,7 +556,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keyup", function (e) {
     e.preventDefault();
 
-    if (!fired && (e.key == "i" || e.key == "e")) {
+    if (!fired && (e.key == "i" || e.key == "e" || e.key == "I" || e.key == "E")) {
       clearTimeout(shooterTimer);
       fired = true;
       key = e.key;
@@ -598,6 +598,7 @@ document.addEventListener("DOMContentLoaded", function () {
       whichTrial = practiceTrial;
     }
     switch (key) {
+      case "I":
       case "i":
         if (gun) {
           shotText = "Good shot!";
@@ -610,6 +611,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         break;
 
+      case "E":
       case "e":
         if (gun) {
           shotText = "You've been shot!";
@@ -700,7 +702,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function practiceTrial() {
     key = null;
     scoreDiv.classList.add("invisible");
-    if (count < 16) {
+    if (count < 2) { //16
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
@@ -719,7 +721,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     timerDiv.classList.add("invisible");
     scoreDiv.classList.add("invisible");
-    if (count < 100) {
+    if (count < 2) { //100
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
@@ -742,6 +744,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let countdownTimer;
   let countdownInterval;
   function start() {
+    document.documentElement.style.cursor = "none";
     countdownTimer = 6;
     countdownInterval = setInterval(timer, 1000);
   }
@@ -764,6 +767,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function complete() {
     // footer.classList.add("invisible");
+    document.documentElement.style.cursor = "auto";
     studyDiv.classList.add("invisible");
     const whichTest = storage.getItem("test");
     if (whichTest == "two") {
