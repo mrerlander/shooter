@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardAppendDiv = document.getElementById("card-append");
   const beforeForm = document.getElementById("before-form");
   const afterForm = document.getElementById("after-form");
+  const afterFormText = document.getElementById("after-form-text");
   const instructionsOne = document.getElementById("instructions-one");
   const instructionsTwo = document.getElementById("instructions-two");
   const instructionsThree = document.getElementById("instructions-three");
@@ -409,7 +410,9 @@ document.addEventListener("DOMContentLoaded", function () {
           rememberDiv.classList.add("invisible");
           afterForm.classList.add("invisible");
           id = Date.now();
-          let userRef = database.ref(trainingString + "/" + id + "/" + testString);
+          let userRef = database.ref(
+            trainingString + "/" + id + "/" + testString
+          );
           writeUserData(userRef);
           break;
         }
@@ -480,7 +483,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (testString == "firstStudy") {
         checkForFirstTime(id);
       } else {
-        let userRef = database.ref(trainingString + "/" + id + "/" + testString);
+        let userRef = database.ref(
+          trainingString + "/" + id + "/" + testString
+        );
         writeUserData(userRef);
       }
     }
@@ -559,11 +564,14 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keyup", function (e) {
     e.preventDefault();
 
-    if (!fired && (e.key == "i" || e.key == "e" || e.key == "I" || e.key == "E")) {
+    if (
+      !fired &&
+      (e.key == "i" || e.key == "e" || e.key == "I" || e.key == "E")
+    ) {
       clearTimeout(shooterTimer);
       fired = true;
       key = e.key;
-      
+
       showScore(realTrial);
     }
     if (!practice && e.key == " " && practiceCount < 2) {
@@ -635,7 +643,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (real) {
-      
       let today = new Date();
       let todayDateString = today.toLocaleDateString();
       let todayTimeString = today.toLocaleTimeString();
@@ -705,7 +712,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function practiceTrial() {
     key = null;
     scoreDiv.classList.add("invisible");
-    if (count < 16) { //16
+    if (count < 16) {
+      //16
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
@@ -719,12 +727,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function trial() {
     key = null;
-    if (!fired){
+    if (!fired) {
       fired = true;
     }
     timerDiv.classList.add("invisible");
     scoreDiv.classList.add("invisible");
-    if (count < 100) { //100
+    if (count < 100) {
+      //100
       if (bgCounter == 0) {
         numBackgrounds = Math.floor(Math.random() * 4) + 1;
       }
@@ -778,13 +787,19 @@ document.addEventListener("DOMContentLoaded", function () {
       rememberDiv.classList.remove("invisible");
       testString = "secondStudy";
     } else {
+      if (whichTraining == "control") {
+        beforeForm.textContent =
+          "We only need a couple more things from you. First, we need to be able to match up your data from this session to your second session. To maintain your anonymity, we will show you a series of images and we'd like you to select the image you like best. Please remember your responses or write them down somewhere safe. You'll be shown these same images in your second session.";
+        afterFormText.textContent =
+          "Here are your choices. Please write them down or take a picture with your cell phone so we can match your score here with the one we collect after your second session.";
+      }
       formDiv.classList.remove("invisible");
       testString = "firstStudy";
     }
-    if (whichTraining == 'control'){
-      trainingString = 'control';
+    if (whichTraining == "control") {
+      trainingString = "control";
     } else {
-      trainingString = 'training';
+      trainingString = "training";
     }
   }
 
