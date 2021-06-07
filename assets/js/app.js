@@ -31,12 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const test = urlParams.get("test");
+  const training = urlParams.get("control");
   const storage = window.localStorage;
   let surveyURL =
     "https://csunsbs.qualtrics.com/jfe/form/SV_cSEQTYWt6Ykh5Ii?id=";
   let allDone = false;
   let trialResults = [];
   let testString;
+  let trainingString;
   let gun;
   let shotText;
   let shotPoints;
@@ -374,6 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (checkBox) {
     storage.setItem("test", test);
+    storage.setItem("control", training);
     checkBox.onchange = function () {
       if (this.checked) {
         nextBtn.disabled = false;
@@ -406,7 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
           rememberDiv.classList.add("invisible");
           afterForm.classList.add("invisible");
           id = Date.now();
-          let userRef = database.ref(id + "/" + testString);
+          let userRef = database.ref(trainingString + "/" + id + "/" + testString);
           writeUserData(userRef);
           break;
         }
@@ -477,7 +480,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (testString == "firstStudy") {
         checkForFirstTime(id);
       } else {
-        let userRef = database.ref(id + "/" + testString);
+        let userRef = database.ref(trainingString + "/" + id + "/" + testString);
         writeUserData(userRef);
       }
     }
@@ -517,13 +520,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "That combination already exists. Please select a different assortment of cards."
       );
     } else {
-      let userRef = database.ref(id + "/" + testString);
+      let userRef = database.ref(trainingString + "/" + id + "/" + testString);
       writeUserData(userRef);
     }
   }
 
   function checkForFirstTime(userId) {
-    let ref = database.ref();
+    let ref = database.ref(trainingString);
     let exists;
     ref
       .child(userId)
@@ -770,12 +773,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.documentElement.style.cursor = "auto";
     studyDiv.classList.add("invisible");
     const whichTest = storage.getItem("test");
+    const whichTraining = storage.getItem("control");
     if (whichTest == "two") {
       rememberDiv.classList.remove("invisible");
       testString = "secondStudy";
     } else {
       formDiv.classList.remove("invisible");
       testString = "firstStudy";
+    }
+    if (whichTraining == 'control'){
+      trainingString = 'control';
+    } else {
+      trainingString = 'training';
     }
   }
 
